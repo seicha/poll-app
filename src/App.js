@@ -48,6 +48,14 @@ function App() {
     setSelectedAnswer('')       
   }
 
+  const handleReset = () => {
+    Array.from(document.querySelectorAll("input")).forEach(
+      input => (input.value = "")
+    );
+    setQuestion('')
+    setAnswers([])
+  };
+
   const data = {
     labels: answers.map(answer => answer.text),
     datasets: [
@@ -99,6 +107,7 @@ function App() {
       <input 
         placeholder="Poll Question"
         name="pollQuestion" 
+        disabled={newQuestion.length >= 80}
         value={newQuestion}
         onChange={handleNewQuestion}
       />
@@ -110,7 +119,8 @@ function App() {
       {answers.map((answer) => {
         return (
           <div key={answer.id}>
-            <input
+            <input 
+              disabled={answer.text.length >= 80}
               value={answer.text}
               onChange={(e) => {
                 handleChangeAnswer(answer.id, e)
@@ -123,7 +133,8 @@ function App() {
       })}
       <br/>
       <button onClick={handleAddAnswer}>Add Answer</button>
-
+      <br/>
+      <button onClick={handleReset}>Reset</button>
       <hr/>
 
       <h2>Votes</h2>
