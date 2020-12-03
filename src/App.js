@@ -101,6 +101,11 @@ function App() {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 102, 255, 0.2)',
+          'rgba(119, 119, 119, 0.2)',
+          'rgba(51, 0, 255, 0.2)',
+          'rgba(204, 51, 255,0.2)'
+
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -109,6 +114,10 @@ function App() {
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)',
+          'rgba(255, 102, 255, 1)',
+          'rgba(119, 119, 119, 1)',
+          'rgba(51, 0, 255, 1)',
+          'rgba(204, 51, 255,1)'
         ],
         borderWidth: 1,
       },
@@ -130,82 +139,111 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App container-fluid">
+      <header className="App-header text-left">
+        <h1>Sir Vote-a-lot - <small>enjoy!</small></h1>
       </header>
-      <h2>Quesion</h2> 
-      {question}
-      <br />
-      <input 
-        disabled={newQuestion.length >= 5} //change to 80
-        placeholder="Poll Question"
-        name="pollQuestion"
-        value={newQuestion}
-        onChange={handleNewQuestion}
-      />
-      <button onClick={handleUpdateQuestion}>Update</button>
-
-      <hr/>
-
-      <h2>Answers</h2>
-      {answers.map((answer) => {
-        return (
-          <div key={answer.id}>
-            <input 
-              disabled={answer.text.length >= 10} //change to 80
-              value={answer.text}
-              onChange={(e) => {
-                handleChangeAnswer(answer.id, e)
-              }}
-            />
-            {answers.length > 2 &&
-              <button onClick={() => handleRemoveAnswer(answer.id)}>Remove</button>
-            }
-            <br/>
+      <div className="row">
+        <div className="col-sm-3 text-left">
+          <div className="card d-flex flex-column h-100">
+            <div className="card-body d-flex flex-column justify-content-between">
+              <h5 className="card-title">Your question</h5>
+              {/* <h4>Quesion</h4>  */}
+              <div className="input-group mb-3">
+                <input 
+                  disabled={newQuestion.length >= 80}
+                  placeholder="What's your poll question?"
+                  name="pollQuestion"
+                  value={newQuestion}
+                  onChange={handleNewQuestion}
+                  type="text"
+                  className="form-control"
+                  aria-label="Poll Question"
+                  aria-describedby="pollQuestion"
+                />
+                <button className="btn btn-outline-secondary" type="button" id="pollQuestion" onClick={handleUpdateQuestion}>Update</button>
+              </div>
+              <h5 className="card-title">Your answers</h5>
+              {answers.map((answer) => {
+                return (
+                  <div key={answer.id} className="input-group mb-3">
+                    <input 
+                      disabled={answer.text.length >= 10} //change to 80
+                      value={answer.text}
+                      onChange={(e) => {
+                        handleChangeAnswer(answer.id, e)
+                      }}
+                      text="text"
+                      className="form-control"
+                      placeholder="Your Answer Here - you need at least 2"
+                      aria-label="Answers"
+                      aria-describedby={"answer" + answer.id}
+                    />
+                    <div className="input-group-append">
+                      {answers.length > 2 &&
+                        <button type="button" className="btn btn-outline-secondary" id={"answer" + answer.id} onClick={() => handleRemoveAnswer(answer.id)}>&times;</button>
+                      }
+                    </div>
+                  </div>
+                )
+              })}
+              <div className="text-right">
+                {answers.length < 10 &&
+                <button type="button" className="btn btn-primary" onClick={handleAddAnswer}>Add Answer
+                </button>
+                }
+                <p className="small">{answers.length} /10 possible answers</p>
+              </div>
+              <button type="button" className="btn btn-secondary align-self-end" onClick={handleReset}>Reset</button>
+            </div>
           </div>
-        )
-      })}
-      <br/>
-      {answers.length < 10 &&
-       <button onClick={handleAddAnswer}>Add Answer
-       </button>
-      }
-      <br/>
-      <p>{answers.length} /10 possible answers</p>
-      <br/>
-      <button onClick={handleReset}>Reset</button>
-      <hr/>
-
-      <h2>Votes</h2>
-      {answers.map((answer) => {
-        return (
-          <div key={answer.id}>
-            <input
-              disabled={answers.length < 2}
-              type="checkbox"
-              checked={selectedAnswers.includes(answer.id)}
-              onChange={(e) => handleSelectedAnswers(answer.id, e)}
-            />
-            <span>{answer.text}</span>
-            <br />
+        </div>
+        <div className="col-sm-3 text-left">
+          <div className="card d-flex flex-column h-100">
+            <div className="card-body d-flex flex-column justify-content-between">
+              <h5 className="card-title">{question}</h5>
+              {/* <h4>Votes</h4> */}
+              {/* <h3>{question}</h3> */}
+              {answers.map((answer) => {
+                return (
+                  <div key={answer.id} className="form-check">
+                    <input
+                      disabled={answers.length < 2}
+                      type="checkbox"
+                      checked={selectedAnswers.includes(answer.id)}
+                      onChange={(e) => handleSelectedAnswers(answer.id, e)}
+                      className="form-check-input"
+                      id={"vote" + answer.id}
+                    />
+                    <label className="form-check-label" htmlFor={"vote" + answer.id}>{answer.text}</label>
+                  </div>
+                )
+              })}
+              <button type="button" className="btn btn-primary align-self-end" onClick={handleVotes}>Vote</button>
+              {/* <h2>Result</h2>         
+              <br />
+              {answers.map((answer) => {
+                return (
+                  <div key={answer.id}>
+                    {answer.text}: {votes[answer.id] || 0}
+                    <br />
+                  </div>
+                )
+              })} */}
+            </div>
           </div>
-        )
-      })}
-      <button onClick={handleVotes}>Vote</button>
-      <hr/>
-
-      <h2>Result</h2>
-      <div>Total: {totalVotes()}</div>
-      <br />
-      {answers.map((answer) => {
-        return (
-          <div key={answer.id}>
-            {answer.text}: {votes[answer.id] || 0}
-            <br />
-          </div>
-        )
-      })}
-      <Bar data={data} options={options} />
+        </div>
+        <div className="col-sm-6">
+          <div className="card text-left d-flex flex-column h-100">
+              <div className="card-body d-flex flex-column justify-content-between">
+                <h5 className="card-title">{question}</h5>
+                {/* <h4 className="text-left">Result in chart</h4> */}
+                <Bar data={data} options={options} />
+                <div className="mt-auto">Total: {totalVotes()}</div>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
   );
 }
