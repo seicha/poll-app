@@ -10,9 +10,11 @@ import Button from 'react-bootstrap/Button'; /* delete later */
 function App() {
   const [question, setQuestion] = useState('')
   const [newQuestion, setNewQuestion] = useState('')
-  const [answers, setAnswers] = useState([])
+  const [answers, setAnswers] = useState([
+    {id: uuid(), text: ''}, {id: uuid(), text: ''}
+  ])
   const [votes, setVotes] = useState({})
-  const [selectedAnswer, setSelectedAnswer] = useState('')
+  const [selectedAnswers, setSelectedAnswers] = useState([])
 
   const handleNewQuestion = (e) => {
     setNewQuestion(e.target.value)
@@ -42,19 +44,49 @@ function App() {
   }
   const handleVotes = () => {
     const newVotes = Object.assign({}, votes)
-    newVotes[selectedAnswer] = newVotes[selectedAnswer] || 0;
-    newVotes[selectedAnswer]++;
+    selectedAnswers.forEach((item) => {
+      newVotes[item] = newVotes[item] || 0;
+      newVotes[item]++;
+    })
     setVotes(newVotes);
-    setSelectedAnswer('')       
+    setSelectedAnswers([])       
   }
 
   const handleReset = () => {
-    Array.from(document.querySelectorAll("input")).forEach(
-      input => (input.value = "")
-    );
+    setNewQuestion('')
     setQuestion('')
-    setAnswers([])
+    setAnswers([
+      {id: uuid(), text: ''}, {id: uuid(), text: ''}
+    ])
+    setVotes({});
+    setSelectedAnswers([])
   };
+  const handleSelectedAnswers = (id, e) => {
+    let newSelectedAnswers = selectedAnswers.concat()
+    if (newSelectedAnswers.includes(id)) {
+      newSelectedAnswers = newSelectedAnswers
+        .filter(item => item !== id)
+    } else {
+      newSelectedAnswers.push(id)
+    }
+    setSelectedAnswers(newSelectedAnswers)
+  }
+  console.log(selectedAnswers)
+  
+  const totalVotes = () => {
+    let total = 0;
+    Object.keys(votes).forEach((key) => {
+      total += votes[key]
+    })
+    return total
+  }
+  const maxVotes = () => {
+    let max = 30;
+    Object.keys(votes).forEach((key) => {
+      if (votes[key] > max) max = votes[key]
+    })
+    return max + 10;
+  }
 
   const data = {
     labels: answers.map(answer => answer.text),
@@ -90,7 +122,7 @@ function App() {
           ticks: {
             beginAtZero: true,
             min: 0,
-            max: 30
+            max: maxVotes()
           }
         },
       ],
@@ -105,9 +137,10 @@ function App() {
       {question}
       <br />
       <input 
+        disabled={newQuestion.length >= 5} //change to 80
         placeholder="Poll Question"
-        name="pollQuestion" 
-        disabled={newQuestion.length >= 80}
+        name="pollQuestion"
+        maxLength="80"
         value={newQuestion}
         onChange={handleNewQuestion}
       />
@@ -120,13 +153,16 @@ function App() {
         return (
           <div key={answer.id}>
             <input 
-              disabled={answer.text.length >= 80}
+              disabled={answer.text.length >= 10} //change to 80
+              maxLength="80"
               value={answer.text}
               onChange={(e) => {
                 handleChangeAnswer(answer.id, e)
               }}
             />
-            <button onClick={() => handleRemoveAnswer(answer.id)}>Remove</button>
+            {answers.length > 2 &&
+              <button onClick={() => handleRemoveAnswer(answer.id)}>Remove</button>
+            }
             <br/>
           </div>
         )
@@ -142,9 +178,10 @@ function App() {
         return (
           <div key={answer.id}>
             <input
-              type="radio"
-              checked={selectedAnswer === answer.id}
-              onChange={() => setSelectedAnswer(answer.id)}
+              disabled={answers.length < 2}
+              type="checkbox"
+              checked={selectedAnswers.includes(answer.id)}
+              onChange={(e) => handleSelectedAnswers(answer.id, e)}
             />
             <span>{answer.text}</span>
             <br />
@@ -155,6 +192,8 @@ function App() {
       <hr/>
 
       <h2>Result</h2>
+      <div>Total: {totalVotes()}</div>
+      <br />
       {answers.map((answer) => {
         return (
           <div key={answer.id}>
