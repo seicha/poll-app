@@ -140,7 +140,6 @@ function App() {
         disabled={newQuestion.length >= 5} //change to 80
         placeholder="Poll Question"
         name="pollQuestion"
-        maxLength="80"
         value={newQuestion}
         onChange={handleNewQuestion}
       />
@@ -154,7 +153,6 @@ function App() {
           <div key={answer.id}>
             <input 
               disabled={answer.text.length >= 10} //change to 80
-              maxLength="80"
               value={answer.text}
               onChange={(e) => {
                 handleChangeAnswer(answer.id, e)
@@ -168,7 +166,12 @@ function App() {
         )
       })}
       <br/>
-      <button onClick={handleAddAnswer}>Add Answer</button>
+      {answers.length < 10 &&
+       <button onClick={handleAddAnswer}>Add Answer
+       </button>
+      }
+      <br/>
+      <p>{answers.length} /10 possible answers</p>
       <br/>
       <button onClick={handleReset}>Reset</button>
       <hr/>
