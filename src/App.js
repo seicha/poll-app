@@ -2,9 +2,8 @@ import './App.css';
 import { v4 as uuid } from 'uuid';
 import React, {useState} from "react";
 import { Bar } from 'react-chartjs-2';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
-import 'bootstrap/dist/css/bootstrap.min.css'; /* delete later */
-import Button from 'react-bootstrap/Button'; /* delete later */
 
 function App() {
   const [question, setQuestion] = useState('')
