@@ -208,14 +208,13 @@ function App() {
                   </div>
                 )
               })}
-              <div className="text-right">
-                {answers.length < 10 &&
-                <button type="button" className="btn btn-primary" onClick={handleAddAnswer}>Add Answer
-                </button>
-                }
+              <div className="text-right align-self-end">
                 <p className="small">{answers.length} /10 possible answers</p>
+                <button type="button" className="btn btn-secondary  mr-3" onClick={handleReset}>Reset</button>
+                {answers.length < 10 &&
+                 <button type="button" className="btn btn-primary" onClick={handleAddAnswer}>Add Answer</button>
+                }
               </div>
-              <button type="button" className="btn btn-secondary align-self-end" onClick={handleReset}>Reset</button>
             </div>
           </div>
         </div>
