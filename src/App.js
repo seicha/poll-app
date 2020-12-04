@@ -1,9 +1,8 @@
 import './App.css';
 import { v4 as uuid } from 'uuid';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Bar } from 'react-chartjs-2';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-
 
 function App() {
   const [question, setQuestion] = useState('')
@@ -148,6 +147,10 @@ function App() {
       ]
     }
   }
+
+  useEffect(() => {
+    document.title = "Poll App";
+  }, []);
 
   return (
     <div className="App container-fluid">
