@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { v4 as uuid } from 'uuid';
 import React, {useState} from "react";
@@ -133,18 +132,31 @@ function App() {
             min: 0,
             max: maxVotes()
           }
-        },
+        }
       ],
-    },
+      xAxes: [
+        {
+          ticks: {
+            callback: function(value) {
+              if (value.length > 20) {
+                return value.substr(0, 20) + '...'; //truncate
+              } else {
+                return value
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 
   return (
     <div className="App container-fluid">
-      <header className="App-header text-left">
+      <header className="App-header">
         <h1>Sir Vote-a-lot - <small>enjoy!</small></h1>
       </header>
       <div className="row">
-        <div className="col-sm-3 text-left">
+        <div className="col-sm-3">
           <div className="card d-flex flex-column h-100">
             <div className="card-body d-flex flex-column justify-content-between">
               <h5 className="card-title">Your question</h5>
@@ -205,10 +217,10 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="col-sm-3 text-left">
+        <div className="col-sm-3">
           <div className="card d-flex flex-column h-100">
             <div className="card-body d-flex flex-column justify-content-between">
-              <div className="card-title">
+              <div className="card-title text-wrap">
                 <h5>{question}</h5> 
                 <p className="small">You can select multiple answers</p>
               </div>
@@ -223,7 +235,7 @@ function App() {
                       className="form-check-input"
                       id={"vote" + answer.id}
                     />
-                    <label className="form-check-label" htmlFor={"vote" + answer.id}>{answer.text}</label>
+                    <label className="form-check-label d-block text-wrap" htmlFor={"vote" + answer.id}>{answer.text}</label>
                   </div>
                 )
               })}
@@ -242,7 +254,7 @@ function App() {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card text-left d-flex flex-column h-100">
+          <div className="card d-flex flex-column h-100">
               <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{question}</h5>
                 <Bar data={data} options={options} />
