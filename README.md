@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Getting Started with Interactive Poll App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## User Story
 
-## Available Scripts
+Make an interactive poll application
 
-In the project directory, you can run:
+## Persona
+
++ Survey manager: who wants to take a poll
+
+"As Tom, a Survey Manager who's not tech savvy, I want to have an easy/simple poll application where I can edit and see changes and results in a timely manner. I want to see the result in a chart."
+
++ Participant: who needs to respond to a poll survey manager created
+
+"As Linda, a paticipant who can usually navigate myself on websites okay, I want to have a clear and easy way to vote. I want to see any chnages and updates in real time"
+
+## Handy Info
+
+Functionalities:
++ All fields have a limit of 80 characters.
++ When the limit is reached, fields get disabled.
++ At least 2 options are needed, hence 2 inputs will alwasys be shown.
++ Once the 2 options are added, you will see the remove option.
++ Removing an option will remove any corresponding answers and votes.
++ A yellow warning will be shown, if you don't add 2 options, just as a reminder.
++ 10 is the maximum option you can have - "Add Answer" button will then not be shown.
++ Voting can be done as many times as possible.
++ Multiple options can be voted.
++ The chart will adapt any changes and reflect the reslut in real time.
++ The reset button will reset the whole UI: question, options and answers.
++ Hover over tha chart and you will see the vote counts on each answer.
+
+Using :
++ react ^17.0.1
++ bootstrap ^4.5.3
++ uuid ^8.3.1
++ react-chartjs-2 ^2.11.1
+
+## Usage
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will start the app
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To build the app for production
