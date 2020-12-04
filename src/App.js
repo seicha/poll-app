@@ -148,7 +148,6 @@ function App() {
           <div className="card d-flex flex-column h-100">
             <div className="card-body d-flex flex-column justify-content-between">
               <h5 className="card-title">Your question</h5>
-              {/* <h4>Quesion</h4>  */}
               <div className="input-group mb-3">
                 <input 
                   disabled={newQuestion.length >= 80}
@@ -162,20 +161,28 @@ function App() {
                   aria-describedby="pollQuestion"
                 />
                 <button className="btn btn-outline-secondary" type="button" id="pollQuestion" onClick={handleUpdateQuestion}>Update</button>
+              </div>        
+              <div>
+                <h5 className="d-inline-block">Your answers</h5>
+                {answers.length <= 2 &&
+                  <p className="float-right text-warning d-inline-block">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg> you need at least 2</p>
+                }
               </div>
-              <h5 className="card-title">Your answers</h5>
               {answers.map((answer) => {
                 return (
                   <div key={answer.id} className="input-group mb-3">
                     <input 
-                      disabled={answer.text.length >= 10} //change to 80
+                      disabled={answer.text.length >= 80}
                       value={answer.text}
                       onChange={(e) => {
                         handleChangeAnswer(answer.id, e)
                       }}
                       text="text"
                       className="form-control"
-                      placeholder="Your Answer Here - you need at least 2"
+                      placeholder="Your Answer Here"
                       aria-label="Answers"
                       aria-describedby={"answer" + answer.id}
                     />
@@ -201,9 +208,10 @@ function App() {
         <div className="col-sm-3 text-left">
           <div className="card d-flex flex-column h-100">
             <div className="card-body d-flex flex-column justify-content-between">
-              <h5 className="card-title">{question}</h5>
-              {/* <h4>Votes</h4> */}
-              {/* <h3>{question}</h3> */}
+              <div className="card-title">
+                <h5>{question}</h5> 
+                <p className="small">You can select multiple answers</p>
+              </div>
               {answers.map((answer) => {
                 return (
                   <div key={answer.id} className="form-check">
@@ -237,9 +245,8 @@ function App() {
           <div className="card text-left d-flex flex-column h-100">
               <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{question}</h5>
-                {/* <h4 className="text-left">Result in chart</h4> */}
                 <Bar data={data} options={options} />
-                <div className="mt-auto">Total: {totalVotes()}</div>
+                <div className="mt-auto">Total votes: {totalVotes()}</div>
               </div>
             </div>
         </div>
