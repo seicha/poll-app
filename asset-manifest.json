@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/poll-app/static/css/main.018b1812.chunk.css",
-    "main.js": "/poll-app/static/js/main.c17c6b93.chunk.js",
-    "main.js.map": "/poll-app/static/js/main.c17c6b93.chunk.js.map",
+    "main.css": "/poll-app/static/css/main.bc488c90.chunk.css",
+    "main.js": "/poll-app/static/js/main.451058ad.chunk.js",
+    "main.js.map": "/poll-app/static/js/main.451058ad.chunk.js.map",
     "runtime-main.js": "/poll-app/static/js/runtime-main.ea4bcec5.js",
     "runtime-main.js.map": "/poll-app/static/js/runtime-main.ea4bcec5.js.map",
     "static/css/2.1a02f21c.chunk.css": "/poll-app/static/css/2.1a02f21c.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.9813f21d.chunk.js.map": "/poll-app/static/js/3.9813f21d.chunk.js.map",
     "index.html": "/poll-app/index.html",
     "static/css/2.1a02f21c.chunk.css.map": "/poll-app/static/css/2.1a02f21c.chunk.css.map",
-    "static/css/main.018b1812.chunk.css.map": "/poll-app/static/css/main.018b1812.chunk.css.map",
+    "static/css/main.bc488c90.chunk.css.map": "/poll-app/static/css/main.bc488c90.chunk.css.map",
     "static/js/2.1ba277b6.chunk.js.LICENSE.txt": "/poll-app/static/js/2.1ba277b6.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/poll-app/static/media/logo.6ce24c58.svg"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.ea4bcec5.js",
     "static/css/2.1a02f21c.chunk.css",
     "static/js/2.1ba277b6.chunk.js",
-    "static/css/main.018b1812.chunk.css",
-    "static/js/main.c17c6b93.chunk.js"
+    "static/css/main.bc488c90.chunk.css",
+    "static/js/main.451058ad.chunk.js"
   ]
 }
