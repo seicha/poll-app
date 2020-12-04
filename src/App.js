@@ -210,7 +210,7 @@ function App() {
             <div className="card-body d-flex flex-column justify-content-between">
               <div className="card-title">
                 <h5>{question}</h5> 
-                <p className="small">You can selct multiple answers</p>
+                <p className="small">You can select multiple answers</p>
               </div>
               {answers.map((answer) => {
                 return (
