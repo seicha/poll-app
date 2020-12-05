@@ -1,8 +1,6 @@
 # Getting Started with Interactive Poll App
 
-## User Story
-
-## Story Title
+## User Story Title
 
 Make an interactive poll application
 
