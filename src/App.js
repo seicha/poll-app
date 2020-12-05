@@ -159,7 +159,7 @@ function App() {
       </header>
       <div className="row">
         <div className="col-sm-3">
-          <div className="card d-flex flex-column h-100">
+          <div className="card h-100">
             <div className="card-body d-flex flex-column justify-content-between">
               <h5 className="card-title">Your question</h5>
               <div className="input-group mb-3">
@@ -171,8 +171,6 @@ function App() {
                   onChange={handleNewQuestion}
                   type="text"
                   className="form-control"
-                  aria-label="Poll Question"
-                  aria-describedby="pollQuestion"
                 />
                 <button className="btn btn-outline-secondary" type="button" id="pollQuestion" onClick={handleUpdateQuestion}>Update</button>
               </div>        
@@ -197,8 +195,6 @@ function App() {
                       text="text"
                       className="form-control"
                       placeholder="Your Answer Here"
-                      aria-label="Answers"
-                      aria-describedby={"answer" + answer.id}
                     />
                     <div className="input-group-append">
                       {answers.length > 2 &&
@@ -210,7 +206,7 @@ function App() {
               })}
               <div className="text-right align-self-end">
                 <p className="small">{answers.length} /10 possible answers</p>
-                <button type="button" className="btn btn-secondary  mr-3" onClick={handleReset}>Reset</button>
+                <button type="button" className="btn btn-secondary mr-3" onClick={handleReset}>Reset</button>
                 {answers.length < 10 &&
                  <button type="button" className="btn btn-primary" onClick={handleAddAnswer}>Add Answer</button>
                 }
@@ -219,7 +215,7 @@ function App() {
           </div>
         </div>
         <div className="col-sm-3">
-          <div className="card d-flex flex-column h-100">
+          <div className="card h-100">
             <div className="card-body d-flex flex-column justify-content-between">
               <div className="card-title text-wrap">
                 <h5>{question}</h5> 
@@ -255,11 +251,11 @@ function App() {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card d-flex flex-column h-100">
+          <div className="card h-100">
               <div className="card-body d-flex flex-column justify-content-between">
                 <h5 className="card-title">{question}</h5>
                 <Bar data={data} options={options} />
-                <div className="mt-auto">Total votes: {totalVotes()}</div>
+                <div>Total votes: {totalVotes()}</div>
               </div>
             </div>
         </div>
