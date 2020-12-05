@@ -39,9 +39,7 @@ Make an interactive poll application
 
 4, Vote options and the chart label will get updated in real time while you are editing the answers.
 
-<img width="867" alt="Screenshot 2020-12-05 at 11 55 08" src="https://user-images.githubusercontent.com/18380391/101240732-6d145780-36f1-11eb-98ad-21fa8791f2da.png">
-
-<img width="1762" alt="Screenshot 2020-12-05 at 12 17 55" src="https://user-images.githubusercontent.com/18380391/101241171-2e33d100-36f4-11eb-9fa4-15d76ae55d66.png">
+<img width="1762" alt="Screenshot 2020-12-05 at 12 17 55" src="https://user-images.githubusercontent.com/18380391/101241325-45bf8980-36f5-11eb-98e3-135ab1306421.png">
 
 
 5, Select option(s) and vote by clicking "Vote".
