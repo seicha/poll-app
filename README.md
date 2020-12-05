@@ -22,7 +22,7 @@ Make an interactive poll application
 
 ## How to use the app
 
-1, Enter your poll question and click "Update".
+1, Enter your poll question and click "Update". You can alwasy update your question - it won't reset the whole page.
 
 <img width="421" alt="Screenshot 2020-12-05 at 11 49 21" src="https://user-images.githubusercontent.com/18380391/101240537-fdea3380-36ef-11eb-9652-1696b2e2bd4c.png">
 
