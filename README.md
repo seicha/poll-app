@@ -39,7 +39,7 @@ Make an interactive poll application
 
 4, Vote options and the chart label will get updated in real time while you are editing the answers.
 
-<img width="1762" alt="Screenshot 2020-12-05 at 12 17 55" src="https://user-images.githubusercontent.com/18380391/101241325-45bf8980-36f5-11eb-98e3-135ab1306421.png">
+<img width="1761" alt="Screenshot 2020-12-05 at 13 09 40" src="https://user-images.githubusercontent.com/18380391/101242710-70144580-36fb-11eb-9e89-bb36d22c4ebe.png">
 
 
 5, Select option(s) and vote by clicking "Vote".
@@ -54,7 +54,7 @@ Make an interactive poll application
 
 7, Reset button will reset everything.
 
-<img width="421" alt="Screenshot 2020-12-05 at 11 49 21" src="https://user-images.githubusercontent.com/18380391/101240537-fdea3380-36ef-11eb-9652-1696b2e2bd4c.png">
+<img width="419" alt="Screenshot 2020-12-05 at 13 12 41" src="https://user-images.githubusercontent.com/18380391/101242733-933ef500-36fb-11eb-9653-61098f31c640.png">
 
 
 8, have fun!
